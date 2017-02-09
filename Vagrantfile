@@ -7,8 +7,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "code/provision/setup.sh"
 
-  config.vm.network "private_network", ip: "10.4.4.100"
-  config.vm.network "public_network", ip: "192.168.0.160"
+  config.vm.network "private_network", ip: "10.4.4.101"
+  config.vm.network "public_network", ip: "192.168.1.161"
 
   config.vm.synced_folder "./code", "/var/www", create: true, id: "v-root", mount_options: ["rw", "tcp", "nolock", "noacl", "async"], type: "nfs", nfs_udp: false
 

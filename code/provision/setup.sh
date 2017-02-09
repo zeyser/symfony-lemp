@@ -5,9 +5,9 @@ apt-get upgrade -y &>>/var/www/symfonylemp.log
 apt-get install python-software-properties build-essential -y &>>/var/www/symfonylemp.log
 apt-get install curl &>>/var/www/symfonylemp.log
 
-mkdir -p /usr/local/bin
-curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
-chmod a+x /usr/local/bin/symfony
+# mkdir -p /usr/local/bin
+# curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+# chmod a+x /usr/local/bin/symfony
 
 systemctl stop apache2 &>>/var/www/symfonylemp.log
 systemctl disable apache2 &>>/var/www/symfonylemp.log
@@ -51,9 +51,7 @@ php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 
 cd /var/www/
-symfony new project
 
-rm /var/www/project/app/config/parameters.yml
-cp /var/www/provision/parameters.yml /var/www/project/app/config/parameters.yml
+composer create-project --prefer-dist laravel/laravel project
 
 echo "127.0.0.1 symfony.dev" >> /etc/hosts
